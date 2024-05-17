@@ -1,0 +1,17 @@
+DateTime? currentBackPressTime       
+onWillPop: () async {
+          if (nProvider.currentIndex != 0) {
+            nProvider.setNavIndex(0);
+            return false;
+          }
+          DateTime now = DateTime.now();
+          if (currentBackPressTime == null ||
+              now.difference(currentBackPressTime!) >
+                  const Duration(seconds: 2)) {
+            currentBackPressTime = now;
+            showToast(
+                asProvider.getString('Press again to exit'), cc.blackColor);
+            return false;
+          }
+          return true;
+        },
