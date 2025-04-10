@@ -16,7 +16,7 @@ class ApiResponse<T> {
     this.errorMessage,
   });
 
-  bool get isSuccess => statusCode >= 200 && statusCode < 300;
+  bool get isSuccess => statusCode >= 200 && statusCode < 201;
 }
 
 class ApiService {
